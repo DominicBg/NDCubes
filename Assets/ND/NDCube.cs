@@ -3,41 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NDCube : MonoBehaviour {
+//Generate des cubes de dimensions n >= 3
 
+
+public class NDCube : MonoBehaviour
+{
     public List<VectorN> vertices { get; protected set; }
     public List<LineGroup> lineGroups { get; set; }
-    public UnityEvent onFullRotation = new UnityEvent();
-    public Gradient gradientOverDimensions;
-
     public GameObject ConnectionNull { get; private set; }
-    public Vector2Int[] listRotationDimension;
-
-    public int dimension;
-    public float size = 10;
-    [SerializeField] float lineSize = 1;
     public NDCube min1DimensionCubeLeft { get; private set; }
     public NDCube min1DimensionCubeRight { get; private set; }
-    NDCube root;
 
+    public UnityEvent onFullRotation = new UnityEvent();
+    public Vector2Int[] listRotationDimension;
+
+    NDCube root;
     Matrix verticesMatrix;
     Matrix modifiedVerticesMatrix;
 
     protected Vector3[] rotatedVertices;
 
+    [Header("Dimension settings")]
+    [SerializeField] protected Gradient gradientOverDimensions;
+    [SerializeField] public int dimension;
+
+    [Header("Parameters")]
+    [SerializeField] protected float size = 10;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float lineSize = 1;
+
+    [Header("References")]
     [SerializeField] RotationByDimension[] rotationByDimension;
     [SerializeField] NDimensionReader dimensionReader;
-    [SerializeField] protected float speed;
     [SerializeField] LineGroup lineGroupPrefab;
 
     float angle = 0;
     float TWOPI = Mathf.PI * 2;
     int minDimension = 2;
-
-    void Start()
-    {
-//        StartGeneration();
-    }
 
     [ContextMenu("Generate N Cube")]
     public void StartGeneration()
@@ -46,14 +48,12 @@ public class NDCube : MonoBehaviour {
         root = this;
         GenerateNCube(root);
         CalculateVerticesMatrix();
-       // PartialRotation();
     }
 
     private void OnValidate()
     {
         PartialRotation();
     }
-
 
     void CalculateVerticesMatrix()
     {
@@ -70,18 +70,24 @@ public class NDCube : MonoBehaviour {
         if (verticesMatrix == null)
             return;
 
-        angle += Time.deltaTime * speed;
-        if(angle > TWOPI)
-        {
-            angle -= TWOPI;
-            onFullRotation.Invoke();
-        }
+        UpdateRotation();
 
         PartialRotation();
 
         rotatedVertices = RotateMatrix(angle);
 
         UpdateLineGroups();
+    }
+
+    //Increase angle until full circle
+    private void UpdateRotation()
+    {
+        angle += Time.deltaTime * speed;
+        if (angle > TWOPI)
+        {
+            angle -= TWOPI;
+            onFullRotation.Invoke();
+        }
     }
 
     private void PartialRotation()
@@ -99,6 +105,7 @@ public class NDCube : MonoBehaviour {
 
     protected Vector3[] RotateMatrix(float angle)
     {
+        //Rotate the verticies matrix
         Matrix rotatedMatrix = modifiedVerticesMatrix.Duplicate();
         for (int i = 0; i < listRotationDimension.Length; i++)
         {
@@ -106,9 +113,9 @@ public class NDCube : MonoBehaviour {
             rotatedMatrix = Matrix.StupidMultiply(rotatedMatrix, rotationMatrix);
         }
 
-        //rotatedVertices = new Vector3[rotatedMatrix.rows];
         Vector3[] rotatedVertices = new Vector3[rotatedMatrix.rows];
 
+        //Convert matrix to 3D coordinate
         for (int i = 0; i < rotatedMatrix.rows; i++)
         {
             rotatedVertices[i] = dimensionReader.NDtoVector3(rotatedMatrix.GetRow(i)) * size;
@@ -204,7 +211,7 @@ public class NDCube : MonoBehaviour {
 
     void Link2LowerDimensions()
     {
-        //GameObject connectionNull
+        //Create connections and link both dimensions together
         ConnectionNull = new GameObject("Connection Null " + dimension);
         ConnectionNull.transform.SetParent(transform);
         ConnectionNull.transform.localPosition = Vector3.zero;
@@ -300,7 +307,6 @@ public class NDCube : MonoBehaviour {
                 else
                 {
                     partialRotatedMatrix.SetRow(i, fullyRotatedMatrix.GetRow(i));
-
                 }
 
                 internalCounter++;

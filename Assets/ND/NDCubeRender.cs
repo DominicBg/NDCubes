@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class NDCubeRender : NDCube {
 
+    [Header("Render options")]
     [SerializeField] int frameRate;
+    [SerializeField] bool renderOnStart;
+
     List<Vector3[]> verticesPerAngle = new List<Vector3[]>();
     Vector3[] currentVerticies;
+
     int index = 0;
     float timer = 0;
-
     float step = 0;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        if(renderOnStart)
+            Calculate();
+    }
+
     [ContextMenu("Calculate")]
     public void Calculate ()
     {
