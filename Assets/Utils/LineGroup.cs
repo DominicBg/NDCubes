@@ -8,20 +8,28 @@ public class LineGroup : MonoBehaviour {
     public LineRenderer lineRenderer;
     public int[] indexTransform;
 
-    public void ApplyLineToGroup(Vector3[] group)
+    public void ApplyLineToGroup(Vector3[] allVertices)
+    {
+        int loopBackBonus = ((loopBack) ? 1 : 0);
+
+        Vector3[] positions = GetPositions(allVertices);
+        lineRenderer.positionCount = indexTransform.Length + loopBackBonus;
+        lineRenderer.SetPositions(positions);
+    }
+
+    public Vector3[] GetPositions(Vector3[] allVertices)
     {
         int loopBackBonus = ((loopBack) ? 1 : 0);
         Vector3[] positions = new Vector3[indexTransform.Length + loopBackBonus];
         for (int i = 0; i < indexTransform.Length; i++)
         {
-            positions[i] = group[indexTransform[i]];
+            positions[i] = allVertices[indexTransform[i]];
         }
         //Loop back
-        if(loopBack)
-            positions[indexTransform.Length] = group[indexTransform[0]];
+        if (loopBack)
+            positions[indexTransform.Length] = allVertices[indexTransform[0]];
 
-        lineRenderer.positionCount = indexTransform.Length + loopBackBonus;
-        lineRenderer.SetPositions(positions);
+        return positions;
     }
 
     public void ApplyColor(Color startColor, Color endColor)

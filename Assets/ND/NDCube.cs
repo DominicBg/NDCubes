@@ -257,6 +257,10 @@ public class NDCube : MonoBehaviour
             lineGroups[i].ApplyLineToGroup(rotatedVertices);
             lineGroups[i].lineRenderer.startWidth = lineSize;
             lineGroups[i].lineRenderer.endWidth = lineSize;
+
+            //without line renderer
+            //Vector3[] positions = lineGroups[i].GetPositions(rotatedVertices);
+            //CameraLineRenderer.Instance.RenderLines(positions,  null, null);
         }
     }
 
