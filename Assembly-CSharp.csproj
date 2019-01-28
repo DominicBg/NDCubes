@@ -78,15 +78,15 @@
     <Compile Include="Assets\ND\ND Reader\NDimensionReader.cs" />
     <Compile Include="Assets\ND\ND Reader\NDimensionReader_Basic.cs" />
     <Compile Include="Assets\ND\ND Reader\NDimensionReader_Round.cs" />
-    <Compile Include="Assets\ND\NDCube.cs" />
-    <Compile Include="Assets\ND\NDCubeRender.cs" />
-    <Compile Include="Assets\ND\NDLineRendererController.cs" />
-    <Compile Include="Assets\ND\NDRotationList.cs" />
-    <Compile Include="Assets\ND\RandomRotationNDCube.cs" />
-    <Compile Include="Assets\ND\VectorN.cs" />
-    <Compile Include="Assets\Utils\LineGroup.cs" />
-    <Compile Include="Assets\Utils\LineTester.cs" />
-    <Compile Include="Assets\Utils\Matrix.cs" />
+    <Compile Include="Assets\ND\Old Version\NDCube.cs" />
+    <Compile Include="Assets\ND\Old Version\NDCubeRender.cs" />
+    <Compile Include="Assets\ND\Old Version\NDLineRendererController.cs" />
+    <Compile Include="Assets\ND\Old Version\NDRotationList.cs" />
+    <Compile Include="Assets\ND\Old Version\RandomRotationNDCube.cs" />
+    <Compile Include="Assets\ND\Old Version\Utils\LineGroup.cs" />
+    <Compile Include="Assets\ND\Old Version\Utils\LineTester.cs" />
+    <Compile Include="Assets\ND\Old Version\Utils\Matrix.cs" />
+    <Compile Include="Assets\ND\Old Version\VectorN.cs" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>D:/User/Desktop/Projects/NDCubes/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>

@@ -207,73 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2556d77235b9f84c9f7878b8f03c160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimension: 5
-  rotator:
-    onFullRotation:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      m_CallsDirty: 1
-    listRotationDimension:
-    - {x: 0, y: 1}
-    rotationByDimension: []
-    dimensionReader: {fileID: 304686048}
-    size: 10
-    speed: 1
-    lineSize: 1
-    angle: 0
-    TWOPI: 6.2831855
-    minDimension: 2
-  gradient:
-    key0:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    key1:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    key2:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key3:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key4:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key5:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key6:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key7:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  material: {fileID: 2100000, guid: 20771346120f2a9439b0243e9be7ae94, type: 2}
-  root:
-    dimension: 0
-    vertices: []
-  vertices: []
 --- !u!4 &304686047
 Transform:
   m_ObjectHideFlags: 0
@@ -620,21 +553,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    dimension: 6
+    dimension: 5
     gradient:
       serializedVersion: 2
-      key0: {r: 0.56078434, g: 1, b: 0.8725769, a: 1}
-      key1: {r: 0.46446037, g: 0, b: 1, a: 1}
-      key2: {r: 0, g: 0.36163378, b: 1, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.96950406, g: 0.5613208, b: 1, a: 1}
+      key1: {r: 0.89099556, g: 0.59684414, b: 0.9715749, a: 1}
+      key2: {r: 0, g: 1, b: 0.6489773, a: 0}
+      key3: {r: 0, g: 0.36163378, b: 1, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 34310
-      ctime2: 57054
-      ctime3: 0
+      ctime1: 9445
+      ctime2: 34310
+      ctime3: 57054
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -648,13 +581,13 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 3
+      m_NumColorKeys: 4
       m_NumAlphaKeys: 2
     material: {fileID: 2100000, guid: 20771346120f2a9439b0243e9be7ae94, type: 2}
     lineSize: 0.1
     preRender: 0
     randomiseAfterRotation: 1
-    randomiseHowManyAxis: 2
+    randomiseHowManyAxis: 3
   rotatorData:
     onFullRotation:
       m_PersistentCalls:
